@@ -223,11 +223,13 @@ return [
             'text' => 'Planos',
             'url'  => '#',
             'active'  => false,
+            'icon' => 'far fa-list-alt',
             'submenu' => [
                 [
                     'active'  => false,
                     'text' => 'Listagem',
                     'url'  => 'admin/plans',
+                    'icon' => 'fas fa-list-alt',
                 ],
             ]
         ],

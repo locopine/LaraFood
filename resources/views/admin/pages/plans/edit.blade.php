@@ -7,7 +7,9 @@
 @section('content_header')
 <h1>
     Cadastrar Novo Plano
-    <a href="{{ route('plans.index') }}" class="btn btn-dark">LIST</a>
+    <a href="{{ route('plans.index') }}" class="btn btn-dark">
+        <i class="fas fa-angle-double-left"></i>
+    </a>
 </h1>
 @stop
 

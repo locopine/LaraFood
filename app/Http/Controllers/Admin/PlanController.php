@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Plan;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PlanCreateRequest;
 use App\Http\Requests\PlanUpdateRequest;
 
@@ -17,6 +16,16 @@ class PlanController extends Controller
     {
         $this->repository = $plan;
     }
+
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+
+        $plans = $this->repository->search($request->search);
+
+        return view('admin.pages.plans.index', compact('plans', 'filters'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,20 +56,14 @@ class PlanController extends Controller
      */
     public function store(PlanCreateRequest $request)
     {
-        $inserido = null;
-        $dados = $request->all();
-        $dados['url'] = Str::kebab($request->name);
-
-        $inserido = $this->repository->create($dados);
+        $inserido = $this->repository->create($request->all());
 
         if ($inserido) {
             return redirect(route('plans.index'));
-        }else{
+        } else {
             return redirect(route('plans.create'))
-            ->with('message', 'Erro durante cadastro do novo plano');
+                ->with('message', 'Erro durante cadastro do novo plano');
         }
-
-
     }
 
     /**
@@ -75,7 +78,7 @@ class PlanController extends Controller
 
         $request->session()->put('retorno', url()->previous());
 
-        if(!$plan)
+        if (!$plan)
             return redirect()->back();
 
         return view('admin.pages.plans.show', compact('plan'));
@@ -91,7 +94,7 @@ class PlanController extends Controller
     {
         $plan = $this->repository->where('id', $id)->first();
 
-        if(!$plan)
+        if (!$plan)
             return redirect()->back();
 
         return view('admin.pages.plans.edit', compact('plan'));
@@ -109,11 +112,10 @@ class PlanController extends Controller
 
         $plan = $this->repository->findOrFail($id);
 
-        if(!$plan)
+        if (!$plan)
             return redirect()->back();
 
         $plan->update($request->all());
-
 
         return redirect($request->uri);
     }
@@ -128,7 +130,7 @@ class PlanController extends Controller
     {
         $plan = $this->repository->where('id', $id)->first();
 
-        if(!$plan)
+        if (!$plan)
             return redirect()->back();
 
         $plan->delete();
