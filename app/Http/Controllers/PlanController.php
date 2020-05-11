@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\PlanCreateRequest;
+use App\Http\Requests\PlanUpdateRequest;
 
 class PlanController extends Controller
 {
@@ -103,10 +104,8 @@ class PlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PlanUpdateRequest $request, $id)
     {
-
-        // dd($request->uri);
 
         $plan = $this->repository->findOrFail($id);
 

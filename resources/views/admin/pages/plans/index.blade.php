@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{ $plan->name }}</td>
                         <td>{{ $plan->url }}</td>
-                        <td>{{ $plan->price }}</td>
+                        <td class="text-right"> R$ {{ number_format($plan->price,2,',','.') }}</td>
                         <td>{{ $plan->description }}</td>
                         <td>
                             <a href="{{ route('plans.show', $plan->id) }}" class="btn btn-warning">VER</a>

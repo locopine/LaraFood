@@ -18,7 +18,7 @@
         <ul>
             <li><strong>Nome: </strong>{{ $plan->name }}</li>
             <li><strong>URL: </strong>{{ $plan->url }}</li>
-            <li><strong>Preço: </strong>{{ number_format($plan->price,2,',','.') }}</li>
+            <li><strong>Preço: </strong>R$ {{ number_format($plan->price,2,',','.') }}</li>
             <li><strong>Descrição: </strong>{{ $plan->description }}</li>
         </ul>
             <div class="form-group botoes">
