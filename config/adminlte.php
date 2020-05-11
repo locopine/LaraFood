@@ -167,7 +167,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
     'logout_url' => 'logout',
 
@@ -212,6 +212,24 @@ return [
             'text' => 'search',
             'search' => true,
             'topnav' => true,
+        ],
+        'DASHBOARD',
+        [
+            'text' => 'Dashboard',
+            'url'  => 'admin',
+        ],
+        'PLANOS',
+        [
+            'text' => 'Planos',
+            'url'  => '#',
+            'active'  => false,
+            'submenu' => [
+                [
+                    'active'  => false,
+                    'text' => 'Listagem',
+                    'url'  => 'admin/plans',
+                ],
+            ]
         ],
         [
             'text' => 'blog',

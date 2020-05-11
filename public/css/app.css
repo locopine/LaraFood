@@ -1,0 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins&display=swap);:root {
+  --dark: #000 !important;
+  --darker: #111 !important;
+  --dark-medium: #333 !important;
+  --dark-low: #666 !important;
+  --light-low: #999 !important;
+  --light-medium: #ddd !important;
+  --lighter: #ddd !important;
+  --light: #fff !important;
+  --featured: #ff9900 !important;
+  --featured: #d68100 !important;
+  --light-lowed: #343a40;
+  --body-bg: #f8fafc;
+  --font-family-sans-serif: Nunito, sans-serif;
+  --font-size-base: 0.9rem;
+  --line-height-base: 1.6;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+

@@ -6,4 +6,7 @@ mix.js('resources/js/app.js', 'public/js')
     .browserSync({
         proxy: 'larafood.amago'
     })
-    .bladeReload();
+    .bladeReload()
+
+    .copy('node_modules/inputmask/dist/inputmask.min.js', 'public/js')
+    .copy('node_modules/inputmask/dist/jquery.inputmask.min.js', 'public/js');
