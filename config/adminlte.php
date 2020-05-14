@@ -233,6 +233,21 @@ return [
                 ],
             ]
         ],
+        'PERFIS',
+        [
+            'text' => 'Perfis',
+            'url'  => '#',
+            'active'  => false,
+            'icon' => 'far fa-address-book',
+            'submenu' => [
+                [
+                    'active'  => false,
+                    'text' => 'Listagem',
+                    'url'  => 'admin/profiles',
+                    'icon' => 'fas fa-address-book',
+                ],
+            ]
+        ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',

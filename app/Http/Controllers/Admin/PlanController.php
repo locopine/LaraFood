@@ -128,10 +128,19 @@ class PlanController extends Controller
      */
     public function destroy($id)
     {
-        $plan = $this->repository->where('id', $id)->first();
+        $plan = $this->repository
+            ->with('details')
+            ->where('id', $id)
+            ->first();
 
         if (!$plan)
             return redirect()->back();
+
+        if ($plan->details->count() > 0) {
+            return redirect()
+                ->back()
+                ->with('error', 'Esse plano contém Detalhes atrelados, portanto não é permitido removê-lo.');
+        }
 
         $plan->delete();
 
