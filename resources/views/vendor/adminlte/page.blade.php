@@ -9,6 +9,11 @@
 @section('adminlte_css')
 @stack('css')
 @yield('css')
+<script>
+    window.Laravel = <?php echo json_encode([
+                            'csrfToken' => csrf_token(),
+                        ]); ?>
+</script>
 @stop
 
 @section('classes_body', $adminlte->getBodyClasses())
@@ -32,6 +37,8 @@
 
     {{-- Content Wrapper --}}
     <div class="content-wrapper">
+
+        @include('includes.breadcrumb')
 
         {{-- Content Header --}}
         <div class="content-header">
