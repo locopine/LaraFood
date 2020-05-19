@@ -2,19 +2,25 @@
 
 @extends('adminlte::page')
 
+@php $title = ucfirst(Request::segment(2)); @endphp
+
 @section('title', 'Planos')
 
+@section('tools')
+<a class="btn btn-dark" href=" {{route('plans.create')}}">
+    <span class="fa fa-plus"></span>
+</a>
+@endsection
+
 @section('content_header')
-<ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item">
-        <a href="{{ route('dashboard.index') }}">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item active" aria-current="page">
-        Planos
-    </li>
-</ol>
-<h1>Planos <a href="{{ route('plans.create') }}" class="btn btn-dark"><i class="far fa-plus-square"></i></a></h1>
+<h1><i class="fa fa-list"></i> @yield('title') @yield('tools')</h1>
 @stop
+
+@section('breadcrumb')
+<li class="breadcrumb-item">
+    Plans
+</li>
+@endsection
 
 @section('content')
 <div class="card">
@@ -48,6 +54,7 @@
                     <td>
                         <a data-toggle="tooltip" title="Detalhes do Plano!" data-placement="left" href="{{ route('details.plan.index', $plan->id) }}" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
                         <a data-toggle="tooltip" title="Exibição, Edição e Exclusão do Plano!" data-placement="left" href="{{ route('plans.show', $plan->id) }}" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                        <a data-toggle="tooltip" title="Perfis do Plano" data-placement="left" href="{{ route('plans.profiles', $plan->id) }}" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
                     </td>
                 </tr>
                 @endforeach

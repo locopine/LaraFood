@@ -2,16 +2,35 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Cadastrar Novo Plano')
+@section('title', 'Alterar Plano')
+
+@php $title = ucfirst(Request::segment(2)); @endphp
 
 @section('content_header')
 <h1>
-    Cadastrar Novo Plano
+    Alterar Plano
     <a href="{{ route('plans.index') }}" class="btn btn-dark">
         <i class="fas fa-angle-double-left"></i>
     </a>
 </h1>
 @stop
+
+@section('breadcrumb')
+<li class="breadcrumb-item">
+    <a href="{{ route('plans.index') }}">
+        {{ $title }}
+    </a>
+</li>
+<li class="breadcrumb-item">
+    <a href="{{ route('plans.show', $plan->id) }}">
+        {{ $plan->name }}
+    </a>
+</li>
+<li class="breadcrumb-item">
+    @yield('title')
+</li>
+@endsection
+
 
 @section('content')
 

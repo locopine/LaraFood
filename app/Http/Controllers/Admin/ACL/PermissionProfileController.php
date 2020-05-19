@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 
 class PermissionProfileController extends Controller
 {
-    protected $profile, $permission;
+    protected $profile, $permission, $records;
 
     public function __construct(Profile $profile, Permission $permission)
     {
         $this->permission = $permission;
         $this->profile = $profile;
+        $this->records = new \stdClass;
     }
 
     /**
@@ -24,6 +25,8 @@ class PermissionProfileController extends Controller
      */
     public function permissions($idProfile)
     {
+        $records = $this->records->title = "Permissões do Perfil";
+
         $profile = $this->profile->with('permissions')->findOrFail($idProfile);
 
         if (!$profile) {
@@ -32,7 +35,7 @@ class PermissionProfileController extends Controller
 
         $permissions = $profile->permissions()->paginate(8);
 
-        return view('admin.pages.profiles.permissions.permissions', compact('profile', 'permissions'));
+        return view('admin.pages.profiles.permissions.permissions', compact('profile', 'permissions', 'records'));
     }
 
     /**

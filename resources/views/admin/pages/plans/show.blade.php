@@ -2,16 +2,30 @@
 
 @extends('adminlte::page')
 
+@php $title = ucfirst(Request::segment(2)); @endphp
+
 @section('title', 'Detalhes do Plano')
 
+@section('tools')
+<a href="{{ route('plans.index') }}" class="btn btn-dark">
+    <i class="fas fa-angle-double-left"></i>
+</a>
+@endsection
+
 @section('content_header')
-<h1>
-    Detalhes do Plano <b>{{ $plan->name }}</b>
-    <a href="{{ route('plans.index') }}" class="btn btn-dark">
-        <i class="fas fa-angle-double-left"></i>
-    </a>
-</h1>
+<h1><i class="fa fa-list"></i> @yield('title') <b>{{ $plan->name }}</b> @yield('tools')</h1>
 @stop
+
+@section('breadcrumb')
+<li class="breadcrumb-item">
+    <a href="{{ route('plans.index') }}">
+        {{ $title }}
+    </a>
+</li>
+<li class="breadcrumb-item">
+    Show
+</li>
+@endsection
 
 @section('content')
 

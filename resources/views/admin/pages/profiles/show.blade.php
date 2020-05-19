@@ -5,7 +5,7 @@
 @section('title', $title)
 
 @section('tools')
-<a class="btn btn-dark" href=" {{ route('profiles.permissions.available',$profile->id) }}">
+<a class="btn btn-dark" href=" {{ route('profiles.create') }}">
     <span class="fa fa-plus"></span>
 </a>
 @stop
@@ -57,7 +57,11 @@
     {{-- Listagens das permissões relacionadas ao Perfil --}}
     @if(isset($permissions[0]->id) && count($permissions) > 0)
     <div class="col-sm-12">
-        <h3>Permissões</h3>
+        <h3>Permissões
+            <a class="btn btn-dark" href=" {{ route('profiles.permissions.available',$profile->id) }}">
+                <span class="fa fa-plus"></span>
+            </a>
+        </h3>
         @foreach($permissions as $permission)
         @include('admin.pages.profiles.permissions.cards.attachedPermission')
         @endforeach

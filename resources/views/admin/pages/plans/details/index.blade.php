@@ -2,32 +2,39 @@
 
 @extends('adminlte::page')
 
-@section('title', "Detalhes do Planos {$plan->name}")
+@php $title = ucfirst(Request::segment(2)); @endphp
+
+@section('title', "Detalhes do Plano")
+
+@section('tools')
+<a href="{{ route('details.plan.create', $plan->id) }}" class="btn btn-dark">
+    <i class="far fa-plus-square"></i>
+</a>
+<a href="{{ route('plans.index') }}" class="btn btn-dark">
+    <i class="fas fa-angle-double-left"></i>
+</a>
+@endsection
 
 @section('content_header')
-<ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item">
-        <a href="{{ route('dashboard.index') }}">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item">
-        <a href="{{ route('plans.index') }}">Planos</a>
-    </li>
-    <li class="breadcrumb-item">
-        <a href="{{ route('plans.show', $plan->id) }}">{{ $plan->name }}</a>
-    </li>
-    <li class="breadcrumb-item active" aria-current="page">
-        Detallhes do Planos
-    </li>
-</ol>
-<h1>Detalhes do Planos <b><i>{{ $plan->name }} </i></b>
-    <a href="{{ route('details.plan.create', $plan->id) }}" class="btn btn-dark">
-        <i class="far fa-plus-square"></i>
-    </a>
-    <a href="{{ route('plans.index') }}" class="btn btn-dark">
-        <i class="fas fa-angle-double-left"></i>
-    </a>
+<h1>
+    <i class="fa fa-list"></i>
+    @yield('title')
+    <b><i>{{ $plan->name }} </i></b>
+    @yield('tools')
 </h1>
 @stop
+
+@section('breadcrumb')
+<li class="breadcrumb-item">
+    <a href="{{ route('plans.index') }}">Planos</a>
+</li>
+<li class="breadcrumb-item">
+    <a href="{{ route('plans.show', $plan->id) }}">{{ $plan->name }}</a>
+</li>
+<li class="breadcrumb-item active" aria-current="page">
+    Detallhes do Planos
+</li>
+@endsection
 
 @section('content')
 <div class="card">

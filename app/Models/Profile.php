@@ -18,7 +18,16 @@ class Profile extends Model
     }
 
     /**
-     * Permission not linked with this profile
+     * Get plans
+     */
+
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class);
+    }
+
+    /**
+     * Permission not linked with this Profile
      * Explicação completa em
      * Curso Laravel (LaraFood) > LaraFood > Módulo 06 > Aula 03
      */
